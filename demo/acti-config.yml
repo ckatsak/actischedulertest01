@@ -1,0 +1,45 @@
+apiVersion: kubescheduler.config.k8s.io/v1beta1
+kind: KubeSchedulerConfiguration
+leaderElection:
+  # (Optional) Change true to false if you are not running a HA control-plane.
+  leaderElect: true
+clientConnection:
+  kubeconfig: /etc/kubernetes/scheduler.conf
+profiles:
+- schedulerName: default-scheduler
+  plugins:
+    #queueSort:
+    #  enabled:
+    #  - name: ActiPlugin
+    #  disabled:
+    #  - name: "*"
+    #preFilter:
+    #  enabled:
+    #  - name: ActiPlugin
+    filter:
+      enabled:
+      - name: ActiPlugin
+    #postFilter:
+    #  enabled:
+    #  - name: ActiPlugin
+    #preScore:
+    #  enabled:
+    #  - name: ActiPlugin
+    score:
+      enabled:
+      - name: ActiPlugin
+    #reserve:
+    #  enabled:
+    #  - name: ActiPlugin
+    #permit:
+    #  enabled:
+    #  - name: ActiPlugin
+    #preBind:
+    #  enabled:
+    #  - name: ActiPlugin
+    #bind:
+    #  enabled:
+    #  - name: ActiPlugin
+    #postBind:
+    #  enabled:
+    #  - name: ActiPlugin
